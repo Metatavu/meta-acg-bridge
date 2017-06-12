@@ -22,22 +22,21 @@ module.exports = function(grunt) {
     },
     'curl': {
       'swagger-codegen':  {
-        src: 'http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar',
+        src: 'http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.1/swagger-codegen-cli-2.2.1.jar',
         dest: 'swagger-codegen-cli.jar'
       }
     },
     'shell': {
       'jaxrs-spec-generate': {
-        command : // 'mv jaxrs-spec-generated/pom.xml jaxrs-spec-generated/pom.xml.before && ' +
+        command : 'mv jaxrs-spec-generated/pom.xml jaxrs-spec-generated/pom.xml.before && ' +
           'java -jar swagger-codegen-cli.jar generate ' +
           '-i ./swagger.yaml ' +
           '-l jaxrs-spec ' +
           '--api-package fi.metatavu.acgbridge.server.rest ' +
           '--model-package fi.metatavu.acgbridge.server.rest.model ' +
-          '--group-id fi.metatavu.kunta-api ' +
-          '--artifact-id kunta-api-spec ' +
-          '--artifact-version 0.0.1 ' +
-//           '--artifact-version `cat jaxrs-spec-generated/pom.xml.before|grep version -m 1|sed -e \'s/.*<version>//\'|sed -e \'s/<.*//\'` ' +
+          '--group-id fi.metatavu.acg-bridge ' +
+          '--artifact-id meta-acg-bridge-spec ' +
+          '--artifact-version `cat jaxrs-spec-generated/pom.xml.before|grep version -m 1|sed -e \'s/.*<version>//\'|sed -e \'s/<.*//\'` ' +
           '--template-dir jaxrs-spec-templates ' +
           '--additional-properties dateLibrary=java8 ' +
           '-o jaxrs-spec-generated/'
