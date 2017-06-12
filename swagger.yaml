@@ -50,9 +50,28 @@ definitions:
       id:
         type: string
         description: Unique identifier for the transaction
+      orderId:
+        type: string
+        description: Unique identifier for the orderId
       machineId:
         type: string
         description: Unique identifier for a machine that initiated the transaction
+      serverId:
+        type: string
+        description: Unique identifier for a server that initiated the transaction
+      successUrl:
+        type: string
+        description: URL address to callback when transaction is successful
+      failureUrl:
+        type: string
+        description: URL address to callback when transaction has failed.
+      paymentStrategy:
+        type: string
+        description: Name of payment strategy used for transactions
+      amount:
+        type: number
+        format: double
+        description: The amount for the payment.
       properties:
         type: array
         items:
