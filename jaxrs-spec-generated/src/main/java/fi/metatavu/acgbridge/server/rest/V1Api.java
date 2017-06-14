@@ -4,6 +4,7 @@ import fi.metatavu.acgbridge.server.rest.model.BadRequest;
 import fi.metatavu.acgbridge.server.rest.model.Transaction;
 import fi.metatavu.acgbridge.server.rest.model.Forbidden;
 import fi.metatavu.acgbridge.server.rest.model.InternalServerError;
+import fi.metatavu.acgbridge.server.rest.model.Pong;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -19,7 +20,7 @@ import java.util.List;
 @Api(description = "the v1 API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-06-12T17:44:52.206+03:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-06-14T12:44:17.122+03:00")
 
 public abstract class V1Api extends AbstractApi {
 
@@ -27,13 +28,25 @@ public abstract class V1Api extends AbstractApi {
     @Path("/transactions")
     @Consumes({ "application/json;charset=utf-8" })
     @Produces({ "application/json;charset=utf-8" })
-    @ApiOperation(value = "Creates new transaction", notes = "Creates new transaction", response = Transaction.class, tags={ "Transactions" })
+    @ApiOperation(value = "Creates new transaction", notes = "Creates new transaction", response = Transaction.class, tags={ "Transactions",  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Created transaction", response = Transaction.class),
         @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = Transaction.class),
         @ApiResponse(code = 403, message = "Attempted to make a call with unauthorized client", response = Transaction.class),
         @ApiResponse(code = 500, message = "Internal server error", response = Transaction.class) })
     public abstract Response createTransaction(Transaction transaction,@Context Request request);
+
+    @GET
+    @Path("/system/ping")
+    @Consumes({ "application/json;charset=utf-8" })
+    @Produces({ "application/json;charset=utf-8" })
+    @ApiOperation(value = "Ping system", notes = "Ping system", response = Pong.class, tags={ "System" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Pong", response = Pong.class),
+        @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = Pong.class),
+        @ApiResponse(code = 403, message = "Attempted to make a call with unauthorized client", response = Pong.class),
+        @ApiResponse(code = 500, message = "Internal server error", response = Pong.class) })
+    public abstract Response getSystemPing(@Context Request request);
 
 }
 
