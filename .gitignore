@@ -2,3 +2,4 @@
 /node_modules/
 /swagger-codegen-cli.jar
 /jaxrs-spec-generated/target
+/nbproject
