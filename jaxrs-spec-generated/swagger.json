@@ -47,6 +47,47 @@
       }
     },
     "/v1/transactions" : {
+      "post" : {
+        "tags" : [ "Transactions" ],
+        "summary" : "Creates new transaction",
+        "description" : "Creates new transaction",
+        "operationId" : "createTransaction",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "transaction",
+          "description" : "Transaction to be created",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Transaction"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Created transaction",
+            "schema" : {
+              "$ref" : "#/definitions/Transaction"
+            }
+          },
+          "400" : {
+            "description" : "Invalid request was sent to the server",
+            "schema" : {
+              "$ref" : "#/definitions/BadRequest"
+            }
+          },
+          "403" : {
+            "description" : "Attempted to make a call with unauthorized client",
+            "schema" : {
+              "$ref" : "#/definitions/Forbidden"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "schema" : {
+              "$ref" : "#/definitions/InternalServerError"
+            }
+          }
+        }
+      },
       "delete" : {
         "tags" : [ "Transactions" ],
         "summary" : "Cancel transactions",
