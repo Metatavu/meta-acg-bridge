@@ -66,14 +66,19 @@ paths:
           description: Internal server error
           schema:
             $ref: '#/definitions/InternalServerError'
-  /v1/transactions/{orderId}:
+  /v1/transactions:
     delete:
-      operationId: cancelTransaction
-      summary: Cancel transaction
-      description: Cancel transaction
+      operationId: cancelTransactions
+      summary: Cancel transactions
+      description: Cancel transactions
       parameters:
+        - name: paymentStrategy
+          in: query
+          description: Payment strategy
+          type: string
+          required: true
         - name: orderId
-          in: path
+          in: query
           description: order id
           type: string
           required: true
@@ -81,7 +86,7 @@ paths:
         - Transactions
       responses:
         204:
-          description: The transaction was canceled successfully.
+          description: The transactions were canceled successfully.
         400:
           description: Invalid request was sent to the server
           schema:
