@@ -47,64 +47,27 @@
       }
     },
     "/v1/transactions" : {
-      "post" : {
-        "tags" : [ "Transactions" ],
-        "summary" : "Creates new transaction",
-        "description" : "Creates new transaction",
-        "operationId" : "createTransaction",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "transaction",
-          "description" : "Transaction to be created",
-          "required" : false,
-          "schema" : {
-            "$ref" : "#/definitions/Transaction"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Created transaction",
-            "schema" : {
-              "$ref" : "#/definitions/Transaction"
-            }
-          },
-          "400" : {
-            "description" : "Invalid request was sent to the server",
-            "schema" : {
-              "$ref" : "#/definitions/BadRequest"
-            }
-          },
-          "403" : {
-            "description" : "Attempted to make a call with unauthorized client",
-            "schema" : {
-              "$ref" : "#/definitions/Forbidden"
-            }
-          },
-          "500" : {
-            "description" : "Internal server error",
-            "schema" : {
-              "$ref" : "#/definitions/InternalServerError"
-            }
-          }
-        }
-      }
-    },
-    "/v1/transactions/{orderId}" : {
       "delete" : {
         "tags" : [ "Transactions" ],
-        "summary" : "Cancel transaction",
-        "description" : "Cancel transaction",
-        "operationId" : "cancelTransaction",
+        "summary" : "Cancel transactions",
+        "description" : "Cancel transactions",
+        "operationId" : "cancelTransactions",
         "parameters" : [ {
+          "name" : "paymentStrategy",
+          "in" : "query",
+          "description" : "Payment strategy",
+          "required" : true,
+          "type" : "string"
+        }, {
           "name" : "orderId",
-          "in" : "path",
+          "in" : "query",
           "description" : "order id",
           "required" : true,
           "type" : "string"
         } ],
         "responses" : {
           "204" : {
-            "description" : "The transaction was canceled successfully."
+            "description" : "The transactions were canceled successfully."
           },
           "400" : {
             "description" : "Invalid request was sent to the server",
