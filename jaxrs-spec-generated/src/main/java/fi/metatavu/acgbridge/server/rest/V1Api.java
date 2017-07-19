@@ -1,9 +1,9 @@
 package fi.metatavu.acgbridge.server.rest;
 
 import fi.metatavu.acgbridge.server.rest.model.BadRequest;
-import fi.metatavu.acgbridge.server.rest.model.Transaction;
 import fi.metatavu.acgbridge.server.rest.model.Forbidden;
 import fi.metatavu.acgbridge.server.rest.model.InternalServerError;
+import fi.metatavu.acgbridge.server.rest.model.Transaction;
 import fi.metatavu.acgbridge.server.rest.model.Pong;
 
 import javax.ws.rs.*;
@@ -20,9 +20,21 @@ import java.util.List;
 @Api(description = "the v1 API")
 @Consumes({ "application/json;charset=utf-8" })
 @Produces({ "application/json;charset=utf-8" })
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-06-14T12:44:17.122+03:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2017-07-19T23:05:24.176+03:00")
 
 public abstract class V1Api extends AbstractApi {
+
+    @DELETE
+    @Path("/transactions/{orderId}")
+    @Consumes({ "application/json;charset=utf-8" })
+    @Produces({ "application/json;charset=utf-8" })
+    @ApiOperation(value = "Cancel transaction", notes = "Cancel transaction", response = void.class, tags={ "Transactions",  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 204, message = "The transaction was canceled successfully.", response = void.class),
+        @ApiResponse(code = 400, message = "Invalid request was sent to the server", response = void.class),
+        @ApiResponse(code = 403, message = "Attempted to make a call with unauthorized client", response = void.class),
+        @ApiResponse(code = 500, message = "Internal server error", response = void.class) })
+    public abstract Response cancelTransaction(@PathParam("orderId") String orderId,@Context Request request);
 
     @POST
     @Path("/transactions")
