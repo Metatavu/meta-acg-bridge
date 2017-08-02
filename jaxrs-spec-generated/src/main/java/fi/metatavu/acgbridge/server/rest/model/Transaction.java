@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Transaction   {
   
   private String id = null;
+  private String status = null;
   private String orderId = null;
   private String machineId = null;
   private String serverId = null;
@@ -41,6 +42,23 @@ public class Transaction   {
   }
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * Transaction status. One of PENDING, ERRORED, CANCELLED, SUCCESS or TIMED_OUT
+   **/
+  public Transaction status(String status) {
+    this.status = status;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "null", value = "Transaction status. One of PENDING, ERRORED, CANCELLED, SUCCESS or TIMED_OUT")
+  public String getStatus() {
+    return status;
+  }
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   /**
@@ -189,6 +207,7 @@ public class Transaction   {
     }
     Transaction transaction = (Transaction) o;
     return Objects.equals(id, transaction.id) &&
+        Objects.equals(status, transaction.status) &&
         Objects.equals(orderId, transaction.orderId) &&
         Objects.equals(machineId, transaction.machineId) &&
         Objects.equals(serverId, transaction.serverId) &&
@@ -201,7 +220,7 @@ public class Transaction   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderId, machineId, serverId, successUrl, failureUrl, paymentStrategy, amount, properties);
+    return Objects.hash(id, status, orderId, machineId, serverId, successUrl, failureUrl, paymentStrategy, amount, properties);
   }
 
   @Override
@@ -210,6 +229,7 @@ public class Transaction   {
     sb.append("class Transaction {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    machineId: ").append(toIndentedString(machineId)).append("\n");
     sb.append("    serverId: ").append(toIndentedString(serverId)).append("\n");
