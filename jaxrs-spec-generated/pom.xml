@@ -4,7 +4,7 @@
   <artifactId>meta-acg-bridge-spec</artifactId>
   <packaging>jar</packaging>
   <name>meta-acg-bridge-spec</name>
-  <version>0.0.7-SNAPSHOT</version>
+  <version>0.0.7</version>
   <description>Meta - ACG Bridge specifications</description>
   <url>https://github.com/Metatavu/meta-acg-bridge-spec</url>
 
@@ -33,7 +33,7 @@
     <developerConnection>scm:git:git@github.com:Metatavu/meta-acg-bridge-spec.git</developerConnection>
     <url>git@github.com:Metatavu/meta-acg-bridge-spec.git</url>
     <connection>scm:git:git@github.com:Metatavu/meta-acg-bridge-spec.git</connection>
-    <tag>HEAD</tag>
+    <tag>0.0.7</tag>
   </scm>
 
   <organization>
